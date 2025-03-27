@@ -23,7 +23,7 @@ var upload = multer({
     fileFilter: function(req, file, cb) {
         checkFileType(file, cb);
     }
-}).single('gambar_produk');
+}).single('gambar');
 
 function checkFileType(file, cb) {
     var filetypes = /jpeg|jpg|png|gif/;
@@ -42,9 +42,9 @@ router.get('/', function (req, res, next) {
     connection.query('SELECT * FROM posts ORDER BY id DESC', function (err, rows) {
         if (err) {
             req.flash('error', err);
-            res.render('posts/index', { data: ''});
+            res.render('posts/index', {messages: req.flash(), data: ''});
         } else {
-            res.render('posts/index', { data: rows });
+            res.render('posts/index', {messages: req.flash(), data: rows });
         }
     });
 });
@@ -52,10 +52,10 @@ router.get('/', function (req, res, next) {
 // CREATE POST
 router.get('/create', function (req, res, next) {
     res.render('posts/create', {
-        gambar_produk: '',
-        nama_produk: '',
+        gambar: '',
+        nama: '',
         deskripsi: '',
-        resep: ''
+        harga: ''
     });
 });
 
@@ -78,16 +78,16 @@ router.post('/store', function (req, res, next) {
             return res.redirect('/posts/create');
         }
 
-        var gambar_produk = req.file.filename; // Corrected variable name
-        var { nama_produk, deskripsi, resep } = req.body;
+        var gambar = req.file.filename; // Corrected variable name
+        var { nama, deskripsi, harga } = req.body;
 
-        if(!nama_produk || !deskripsi || !resep || !gambar_produk) {
+        if(!nama || !deskripsi || !harga || !gambar) {
             req.flash('error', 'Silakan lengkapi semua kolom');
-            console.error('Validation Error:', { nama_produk, deskripsi, resep, gambar_produk });
+            console.error('Validation Error:', { nama, deskripsi, harga, gambar });
             return res.redirect('/posts/create');
         }
 
-        var formData = { gambar_produk, nama_produk, deskripsi, resep };
+        var formData = { gambar, nama, deskripsi, harga };
         connection.query('INSERT INTO posts SET ?', formData, function(err, result) {
             if (err) {
                 req.flash('error', 'Gagal menyimpan data. Silakan coba lagi.');
@@ -114,10 +114,10 @@ router.get('/edit/(:id)', function(req, res, next) {
         } else {
             res.render('posts/edit', {
                 id: rows[0].id,
-                gambar_produk: rows[0].gambar_produk,
-                nama_produk: rows[0].nama_produk,
+                gambar: rows[0].gambar,
+                nama: rows[0].nama,
                 deskripsi: rows[0].deskripsi,
-                resep: rows[0].resep
+                harga: rows[0].harga
             });
         }
     });
@@ -133,20 +133,20 @@ router.post('/update/:id', function (req, res, next) {
         }
 
         let id = req.params.id;
-        let nama_produk = req.body.nama_produk;
+        let nama = req.body.nama;
         let deskripsi = req.body.deskripsi;
-        let resep = req.body.resep;
-        let old_gambar_produk = req.body.old_gambar_produk;
-        let gambar_produk = req.file ? req.file.filename : old_gambar_produk;
+        let harga = req.body.harga;
+        let old_gambar = req.body.old_gambar;
+        let gambar = req.file ? req.file.filename : old_gambar;
         let errors = false;
 
-        console.log('Nama Produk:', nama_produk);
+        console.log('Nama Produk:', nama);
         console.log('Deskripsi:', deskripsi);
-        console.log('Resep:', resep);
-        console.log('Old Gambar Produk:', old_gambar_produk);
-        console.log('Gambar Produk:', gambar_produk);
+        console.log('Harga:', harga);
+        console.log('Old Gambar:', old_gambar);
+        console.log('Gambar:', gambar);
 
-        if (!nama_produk) {
+        if (!nama) {
             errors = true;
             req.flash('error', "Silahkan Masukkan Nama Produk");
         }
@@ -156,7 +156,7 @@ router.post('/update/:id', function (req, res, next) {
             req.flash('error', "Silahkan Masukkan Deskripsi Produk");
         }
 
-        if (!resep) {
+        if (!harga) {
             errors = true;
             req.flash('error', "Silahkan Masukkan Resep Produk");
         }
@@ -164,18 +164,18 @@ router.post('/update/:id', function (req, res, next) {
         if (errors) {
             return res.render('posts/edit', {
                 id: id,
-                nama_produk: nama_produk,
+                nama: nama,
                 deskripsi: deskripsi,
-                resep: resep,
-                gambar_produk: old_gambar_produk
+                harga: harga,
+                gambar: old_gambar
             });
         }
 
         let formData = {
-            gambar_produk: gambar_produk,
-            nama_produk: nama_produk,
+            gambar: gambar,
+            nama: nama,
             deskripsi: deskripsi,
-            resep: resep
+            harga: harga
         };
 
         connection.query('UPDATE posts SET ? WHERE id = ?', [formData, id], function(err, result) {
@@ -183,10 +183,10 @@ router.post('/update/:id', function (req, res, next) {
                 req.flash('error', err);
                 return res.render('posts/edit', {
                     id: id,
-                    nama_produk: nama_produk,
+                    nama: nama,
                     deskripsi: deskripsi,
-                    resep: resep,
-                    gambar_produk: old_gambar_produk 
+                    harga: harga,
+                    gambar: old_gambar
                 });
             } else {
                 req.flash('success', 'Data Berhasil Diupdate!');

@@ -14,6 +14,8 @@ var postsRouter = require('./routes/posts'); // <-- route posts
 
 var app = express();
 
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -35,16 +37,6 @@ app.use(session({
 }))
 
 app.use(flash())
-
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
-
-app.use((req, res, next) => {
-  console.log('Request URL:', req.originalUrl);
-  console.log('Request Method:', req.method);
-  console.log('Request Body:', req.body);
-  console.log('Request File:', req.file);
-  next();
-});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

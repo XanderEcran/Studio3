@@ -4,7 +4,7 @@ let connection = mysql.createConnection({
    host:        'localhost',
    user:        'root',
    password:    '',
-   database:    'db_express_mysql'
+   database:    'studio3'
  });
 
 connection.connect(function(error){
@@ -15,4 +15,4 @@ connection.connect(function(error){
    }
  })
 
-module.exports = connection;
+module.exports = connection; 
