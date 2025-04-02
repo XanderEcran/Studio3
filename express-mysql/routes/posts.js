@@ -44,7 +44,23 @@ router.get('/', function (req, res, next) {
             req.flash('error', err);
             res.render('posts/index', {messages: req.flash(), data: ''});
         } else {
+            let IDRupiah = (number) => {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0, // Avoid decimals for IDR
+                }).format(number);
+            };
+
+            // Apply formatting to the 'harga' column
+            rows = rows.map(row => {
+                if (row.harga) {
+                    row.formatted_harga = IDRupiah(row.harga);
+                }
+                return row;
+            });
             res.render('posts/index', {messages: req.flash(), data: rows });
+            
         }
     });
 });
