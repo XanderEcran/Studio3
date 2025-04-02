@@ -8,9 +8,151 @@
     <title>Edit - Studio3 Production</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <style>
+        
+        body {
+            background: linear-gradient(to right, #1a1a1a, #4d1a1a);
+            color: #eaeaea;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+   
+        .container.mt-5 {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-top: 0 !important;
+        }
+   
+        .card {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(202, 34, 34, 0.761);
+            background: rgba(255, 240, 240, 0.9);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: #232020;
+        }
+   
+        .card-body {
+            padding: 30px;
+        }
+   
+        /* 3. Form Styling */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+   
+        .form-group label {
+            display: block;
+            color: #b02a2a;
+            font-size: 0.9em;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+   
+        .form-control {
+            background-color: #ffffff;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            color: #232020;
+            border-radius: 6px;
+            padding: 10px 12px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+   
+        .form-control:focus {
+            background-color: #f8d7da;
+            border-color: #b02a2a;
+            box-shadow: 0 0 0 2px rgba(176, 42, 42, 0.5);
+            outline: none;
+            color: #232020;
+        }
+   
+        /* 4. Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            color: #232020;
+        }
+       
+        thead {
+            background-color: white;
+        }
+       
+        thead th {
+            color: #b02a2a;
+            font-weight: bold;
+            padding: 10px;
+            border-bottom: 2px solid #b02a2a;
+        }
+       
+        tbody td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+       
+        tbody tr:nth-child(even) {
+            background-color: rgba(255, 0, 0, 0.05);
+        }
+   
+        /* 5. Button Styling */
+        .btn {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            margin-right: 10px;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+   
+        .btn-primary {
+            background: #b02a2a;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #a02222;
+            color: white;
+        }
+   
+        .btn-warning {
+            background: #cccccc;
+            color: #333333;
+        }
+        .btn-warning:hover {
+            background: #bbbbbb;
+            color: #333333;
+        }
+   
+        /* 6. Alert Styling */
+        .alert {
+            border-radius: 6px;
+            padding: 12px 15px;
+            font-size: 0.9em;
+            border-width: 1px;
+            border-style: solid;
+            background-color: rgba(0,0,0,0.1);
+        }
+        .alert-danger {
+            color: #f8d7da;
+            border-color: #f5c6cb;
+            background-color: rgba(248, 215, 218, 0.1);
+        }
+        .alert-success {
+            color: #d4edda;
+            border-color: #c3e6cb;
+            background-color: rgba(212, 237, 218, 0.1);
+        }
+    </style> 
 </head>
 
-<body style="background: lightgray">
+<body>
 
     <div class="container mt-5">
         <div class="row">
