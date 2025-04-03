@@ -16,9 +16,15 @@
             margin: 0;
             padding: 20px;
         }
+        #centerTitle{
+            font-size: large;
+            font-weight:bolder;
+            margin-bottom: 25px;
+            margin-left: 28%;
+        }
 
         .table-container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: auto;
             overflow: hidden;
@@ -61,11 +67,16 @@
             font-size: 0.9em;
             border-top: none;
             text-align: left;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            max-width: 200px;
         }
 
         .table tbody td:first-child {
             text-align: center;
         }
+
 
         .table tbody td img {
             max-width: 80px;
@@ -109,7 +120,8 @@
                 <div class="table-container">
                     <div class="card border-0 shadow rounded">
                         <div class="card-body">
-                            <a href="posts/create" class="btn btn-md btn-success mb-3">TAMBAH POST</a>
+                            <a href="posts/create" class="btn btn-md btn-success mb-3">TAMBAH PRODUK</a>
+                            <a id="centerTitle">Produk Studio3</a>
                             <table class="table table-bordered">
                                 <thead>
                                   <tr>

@@ -30,7 +30,7 @@
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(202, 34, 34, 0.761);
-            background: rgba(255, 240, 240, 0.9);
+            background: black;
             backdrop-filter: blur(10px);
             border: none;
             color: #232020;
@@ -47,14 +47,14 @@
    
         .form-group label {
             display: block;
-            color: #b02a2a;
+            color: white;
             font-size: 0.9em;
             margin-bottom: 0.5rem;
             font-weight: bold;
         }
    
         .form-control {
-            background-color: #ffffff;
+            background-color: white;
             border: 1px solid rgba(255, 0, 0, 0.2);
             color: #232020;
             border-radius: 6px;
@@ -173,15 +173,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input type="text" class="form-control" name="nama" value="<%= nama %>" placeholder="Masukkan Title Post">
+                                <input type="text" class="form-control" name="nama" value="<%= nama %>" placeholder="Masukkan Nama Produk">
                             </div>
                             <div class="form-group">
                                 <label>Deskripsi</label>
-                                <textarea class="form-control" name="deskripsi" rows="4" placeholder="Masukkan Konten Post"><%= deskripsi %></textarea>
+                                <textarea class="form-control" name="deskripsi" rows="4" placeholder="Masukkan Deskripsi Produk"><%= deskripsi %></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Harga</label>
-                                <textarea class="form-control" name="harga" rows="4" placeholder="Masukkan Konten Post"><%= harga %></textarea>
+                                <textarea class="form-control" name="harga" rows="4" placeholder="Masukkan Harga Produk"><%= harga %></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">SIMPAN</button>
                             <button type="reset" class="btn btn-warning">RESET</button>
